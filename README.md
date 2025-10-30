@@ -1,78 +1,80 @@
-# 🏆 DSA 210 Term Project (2025–2026 Fall)
+# 🏆 Project Proposal: The Impact of Major Sports Events on Sports Video Game Sales
 
-## 🎯 Title
-**Do Major Sports Events Influence Sports Video Game Sales?**
+## 🎯 Motivation
+The purpose of this project is to investigate whether major international sports events — such as the **FIFA World Cup**, **UEFA European Championship**, and the **Olympic Games** — have a measurable influence on the sales of **sports-related video games**.  
 
----
+Video game publishers often release or promote new titles around these events (for example, *FIFA World Cup Editions* or *Olympic-themed games*).  
+This project aims to determine if there is a **statistically significant increase in sports game sales** during or following these events, and to explore which types of events generate the largest market impact.
 
-## 💡 Motivation
-Large international sports events like the **FIFA World Cup**, **UEFA European Championship**, and **Olympic Games** are watched by billions of people and often boost global interest in sports.  
-Video game companies frequently release or promote their sports titles around these events (e.g., *FIFA World Cup Editions*, *Mario & Sonic at the Olympics*).  
-This project aims to **analyze whether these major sports events have a measurable impact on the sales of sports video games**.
+By leveraging historical sales and event data, this study seeks to identify consumer behavior trends and provide insights useful for publishers and marketers planning game releases.
 
 ---
 
-## 📊 Data Sources
+## 📊 Description of Dataset
+The **primary dataset** will be obtained from **Kaggle’s Video Game Sales Dataset (VGChartz)**, which contains detailed sales information for thousands of video games worldwide.  
 
-### 1. **Primary Dataset**
-- **Video Game Sales Dataset (VGChartz via Kaggle)**  
-  [https://www.kaggle.com/datasets/gregorut/videogamesales](https://www.kaggle.com/datasets/gregorut/videogamesales)  
-  - Variables: `Name`, `Platform`, `Year`, `Genre`, `Publisher`, `Global_Sales`, `NA_Sales`, `EU_Sales`, `JP_Sales`.  
-  - Only rows with `Genre = 'Sports'` will be used.
+This dataset includes variables such as:
+- **Name**  
+- **Platform**  
+- **Year of Release**  
+- **Genre**  
+- **Publisher**  
+- **Global, North American, European, and Japanese Sales**
 
-### 2. **Enrichment Dataset (Sports Events)**
-Custom `sports_events.csv` listing major events:
-| Event | Year | Region |
-|--------|------|--------|
-| FIFA World Cup | 1998, 2002, 2006, 2010, 2014, 2018, 2022 | Global |
-| UEFA Euro | 2000, 2004, 2008, 2012, 2016, 2021 | Europe |
-| Summer Olympics | 2000, 2004, 2008, 2012, 2016, 2021, 2024 | Global |
+For this project, only games classified under the **“Sports”** genre will be analyzed.
 
-Each game year will be compared with nearby event years (`|game_year - event_year| ≤ 1`) to detect possible spikes.
-
-### 3. **Optional Add-ons**
-- Inflation/CPI data (World Bank) to adjust for price changes.  
-- Google Trends API for keywords like *FIFA*, *Olympics*, *NBA* to estimate public interest.
+### Derived Features (Feature Engineering)
+Additional attributes will be created to better understand the data, such as:
+- **Event Year Flag** → Whether the release year coincides with a major sports event.  
+- **Years Since Event** → Time difference between release and nearest event year.  
+- **Average Regional Share** → Ratio of regional to global sales to detect market preferences.
 
 ---
 
-## 🔬 Research Questions / Hypotheses
+## 🌐 Additional Data Sources
+If the Kaggle dataset is incomplete or lacks recent data, it will be enriched with:
+- Official lists of **FIFA World Cup**, **UEFA Euro**, and **Olympic Games** years (from Wikipedia or sports data APIs).  
+- Potential supplementary data such as **Google Trends** interest levels for keywords like “FIFA,” “Olympics,” and “NBA.”  
 
-1. **H₀:** Sports video game sales do *not* change significantly during major sports event years.  
-   **H₁:** Sports video game sales *increase* in event years.
-
-2. How strong is the correlation between event timing and global sales?  
-3. Do different publishers (EA, Konami, 2K Sports) react differently to these events?  
-4. Which event type (World Cup vs Olympics) shows the most impact?
+These external datasets will allow for time-based correlation between real-world sports events and sales spikes.
 
 ---
 
-## 🧠 Analysis Plan
+## 📅 Project Plan
 
-| Stage | Description |
-|--------|-------------|
-| **Data Preparation** | Filter sports games, clean missing years, merge with `sports_events.csv` |
-| **EDA** | Trend of annual global sales; overlay event years; regional breakdowns |
-| **Feature Engineering** | `event_flag`, `years_since_event` features |
-| **Hypothesis Testing** | Compare event vs non-event years (t-test or Mann–Whitney U) |
-| **Modeling** | Linear Regression or Random Forest predicting `Global_Sales` |
-| **Visualization** | Line plots (yearly trend), boxplots (event vs non-event), heatmaps (region × event) |
+### 1️⃣ Data Collection
+- Download and clean the **VGChartz** dataset from Kaggle.  
+- Create or import an **events.csv** file listing all major sports events and their corresponding years.  
+- Merge both datasets based on release year to label event and non-event periods.
+
+### 2️⃣ Data Processing and Cleaning
+- Handle missing or inconsistent values.  
+- Convert categorical data (e.g., genre, region) into usable formats.  
+- Normalize yearly sales data to adjust for industry growth or inflation.
+
+### 3️⃣ Exploratory Data Analysis (EDA)
+- Visualize trends in sports game sales across years and regions.  
+- Compare mean sales in event years vs. non-event years.  
+- Identify which events (World Cup, Euro, Olympics) align with the largest sales increases.
+
+### 4️⃣ Statistical Testing and Modeling
+- Conduct hypothesis testing (t-test or Mann–Whitney U) to verify if sales differ significantly in event years.  
+- Build simple regression models to estimate the effect size of event occurrence on sales volume.  
+- Evaluate which publishers (EA, Konami, 2K) benefit most from event timing.
 
 ---
 
-## 📅 Milestones
+## 🧩 Hypotheses
 
-| Date | Deliverable | Details |
-|------|--------------|---------|
-| **Oct 31** | GitHub Repo + Proposal (this README) | ✅ |
-| **Nov 28** | Data collection + EDA + Hypothesis tests | Raw + cleaned datasets, notebooks |
-| **Jan 2** | Modeling + Evaluation | Regression / feature analysis |
-| **Jan 9 (23:59)** | Final Submission | Report (.pdf) + notebooks |
+### Null Hypothesis (H₀)
+> Major sports events have **no significant impact** on the sales of sports video games.
+
+### Alternative Hypothesis (H₁)
+> Major sports events lead to a **statistically significant increase** in sports video game sales.
 
 ---
 
 ## ⚙️ Tools & Libraries
-
 ```txt
 numpy
 pandas
