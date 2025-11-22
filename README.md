@@ -1,88 +1,126 @@
-# 🏆 Project Proposal: The Impact of Major Sports Events on Sports Video Game Sales
-
-## 🎯 Motivation
-The purpose of this project is to investigate whether major international sports events — such as the **FIFA World Cup**, **UEFA European Championship**, and the **Olympic Games** — have a measurable influence on the sales of **sports-related video games**.  
-
-Video game publishers often release or promote new titles around these events (for example, *FIFA World Cup Editions* or *Olympic-themed games*).  
-This project aims to determine if there is a **statistically significant increase in sports game sales** during or following these events, and to explore which types of events generate the largest market impact.
-
-By leveraging historical sales and event data, this study seeks to identify consumer behavior trends and provide insights useful for publishers and marketers planning game releases.
-
----
-
-## 📊 Description of Dataset
-The **primary dataset** will be obtained from **Kaggle’s Video Game Sales Dataset (VGChartz)**, which contains detailed sales information for thousands of video games worldwide.  
-
-This dataset includes variables such as:
-- **Name**  
-- **Platform**  
-- **Year of Release**  
-- **Genre**  
-- **Publisher**  
-- **Global, North American, European, and Japanese Sales**
-
-For this project, only games classified under the **“Sports”** genre will be analyzed.
-
-### Derived Features (Feature Engineering)
-Additional attributes will be created to better understand the data, such as:
-- **Event Year Flag** → Whether the release year coincides with a major sports event.  
-- **Years Since Event** → Time difference between release and nearest event year.  
-- **Average Regional Share** → Ratio of regional to global sales to detect market preferences.
-
----
-
-## 🌐 Additional Data Sources
-If the Kaggle dataset is incomplete or lacks recent data, it will be enriched with:
-- Official lists of **FIFA World Cup**, **UEFA Euro**, and **Olympic Games** years (from Wikipedia or sports data APIs).  
-- Potential supplementary data such as **Google Trends** interest levels for keywords like “FIFA,” “Olympics,” and “NBA.”  
-
-These external datasets will allow for time-based correlation between real-world sports events and sales spikes.
-
----
-
-## 📅 Project Plan
-
-### 1️⃣ Data Collection
-- Download and clean the **VGChartz** dataset from Kaggle.  
-- Create or import an **events.csv** file listing all major sports events and their corresponding years.  
-- Merge both datasets based on release year to label event and non-event periods.
-
-### 2️⃣ Data Processing and Cleaning
-- Handle missing or inconsistent values.  
-- Convert categorical data (e.g., genre, region) into usable formats.  
-- Normalize yearly sales data to adjust for industry growth or inflation.
-
-### 3️⃣ Exploratory Data Analysis (EDA)
-- Visualize trends in sports game sales across years and regions.  
-- Compare mean sales in event years vs. non-event years.  
-- Identify which events (World Cup, Euro, Olympics) align with the largest sales increases.
-
-### 4️⃣ Statistical Testing and Modeling
-- Conduct hypothesis testing (t-test or Mann–Whitney U) to verify if sales differ significantly in event years.  
-- Build simple regression models to estimate the effect size of event occurrence on sales volume.  
-- Evaluate which publishers (EA, Konami, 2K) benefit most from event timing.
-
----
-
-## 🧩 Hypotheses
-
-### Null Hypothesis (H₀)
-> Major sports events have **no significant impact** on the sales of sports video games.
-
-### Alternative Hypothesis (H₁)
-> Major sports events lead to a **statistically significant increase** in sports video game sales.
-
----
-
-## ⚙️ Tools & Libraries
-```txt
-numpy
-pandas
-matplotlib
-seaborn
-plotly
-scikit-learn
-scipy
-statsmodels
-jupyter
-
+♟️ DSA 210 Term Project
+Analyzing the Impact of Chess Openings on Win Rates Across Rating Levels and Time Controls
+📌 1. Introduction & Motivation
+Chess openings form the foundation of strategic play. They dictate early-game plans, influence piece activity, and determine long-term positional structures.
+However, the effectiveness of an opening can vary widely depending on:
+Player strength (Elo rating)
+Game speed (blitz, rapid, classical)
+The nature of the opening itself (tactical vs positional)
+This project aims to provide empirical, data-driven insight into how openings perform in real online play. Using millions of games from Lichess, we investigate whether certain openings consistently lead to higher win rates, and whether these trends shift based on rating level and game type.
+📊 2. Dataset Description
+Dataset: Lichess 6.25 Million Games (July 2016)
+This is the only dataset used for the analysis.
+Key Columns Used
+Opening — Complete opening name
+ECO — Opening ECO code
+Result — 1-0 (White wins), 0-1 (Black wins), 1/2-1/2 (Draw)
+WhiteElo, BlackElo — Player ratings
+game_type — blitz / rapid / classical / bullet
+UTCDate — Date of the game
+Termination — Reason for game end (resignation, timeout, mate, etc.)
+AN — Movetext (not used directly)
+This dataset already contains all necessary features for a complete analysis; no enrichment dataset is required.
+🔧 3. Data Cleaning & Preprocessing
+3.1 Cleaning Steps
+Remove games with missing:
+Opening name
+ECO code
+Player ratings
+Standardize Result into:
+white_win
+black_win
+draw
+Remove corrupted movements or invalid records
+3.2 Feature Engineering
+Average Player Rating
+mean_elo = (WhiteElo + BlackElo) / 2
+Rating Buckets
+800–1200 → Beginner
+1200–1600 → Intermediate
+1600–2000 → Advanced
+2000+ → Expert
+Opening Families via ECO prefix (A,B,C,D,E)
+Game Type Category
+Directly from dataset: blitz / rapid / classical / bullet
+Opening Popularity
+Frequency of each opening across the dataset
+📈 4. Exploratory Data Analysis (EDA)
+Planned analyses include:
+4.1 Overall Opening Statistics
+Top 20 most used openings
+Top 20 openings by winrate (White / Black)
+ECO family winrate heatmap
+Popularity vs winrate scatter plots
+4.2 Time Control Breakdown
+Separate opening performance for:
+Blitz games
+Rapid games
+Classical games
+Questions explored:
+Are tactical openings more successful in blitz?
+Are strategic, theory-heavy openings better in classical?
+4.3 Rating-Level Analysis
+Opening winrate within each rating bucket
+Do higher-rated players perform better with certain openings?
+Are “beginner-friendly” openings identifiable?
+4.4 Opening × Rating × Time Control Interaction
+A three-dimensional analysis using pivot tables and heatmaps:
+winrate(opening | rating_bucket, game_type)
+🧪 5. Hypotheses
+Primary Hypothesis
+H₀: Chess openings do not significantly affect win rates.
+H₁: Chess openings significantly affect win rates.
+Rating-Level Hypothesis
+H₀: Opening success does not vary across player rating levels.
+H₁: Opening success varies significantly across rating levels.
+Time-Control Hypothesis
+H₀: Opening effectiveness does not differ across blitz, rapid, and classical formats.
+H₁: Opening effectiveness differs significantly across game types.
+📐 6. Statistical Methods & Tests
+Chi-Square Test → opening × result
+Chi-Square (3-way) → opening × result × game_type
+ANOVA / Kruskal-Wallis → comparing winrates across rating buckets
+Two-Proportion Z-tests → comparing openings directly (e.g., Sicilian vs French)
+Effect Size Metrics
+Cramér’s V
+Eta-squared
+Optional Modeling
+A predictive model estimating win probability:
+P(Win) ~ opening + rating_bucket + game_type
+Models:
+Logistic Regression
+Random Forest
+🗂️ 7. Repository Structure
+chess-openings-analysis/
+│
+├── data/
+│   └── games.csv
+│
+├── notebooks/
+│   ├── 01_cleaning.ipynb
+│   ├── 02_eda.ipynb
+│   ├── 03_timecontrol_analysis.ipynb
+│   ├── 04_hypothesis_testing.ipynb
+│   └── 05_model.ipynb
+│
+├── src/
+│   ├── preprocess.py
+│   └── opening_family_mapping.py
+│
+├── reports/
+│   └── final_report.pdf
+│
+├── figures/
+│   ├── opening_winrates.png
+│   ├── blitz_openings.png
+│   ├── rapid_openings.png
+│   └── classical_openings.png
+│
+└── README.md
+🎯 8. Expected Outcomes
+A ranked list of the strongest openings
+Identification of openings best suited for blitz, rapid, and classical
+Evidence of rating-dependent opening performance
+ECO code family analysis and structure
+Statistically validated findings aligned with hypothesis tests
+Fully reproducible analysis pipeline
