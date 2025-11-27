@@ -213,3 +213,23 @@ Predict game outcome using:
 * ROC–AUC (binary targets)
 
 Comparison focuses on whether including opening-related features improves prediction over rating-only baselines.
+
+---
+
+### 7. Limitations
+
+Data represents online games only; results may not generalize to over-the-board play.
+Rare openings have small sample sizes, which can distort win-rate estimates.
+Elo ratings are imperfect measures of true player skill.
+Timeouts and resignations can influence results independent of opening choice.
+ECO families are broad and do not capture detailed stylistic differences.
+
+---
+
+### 8. Future Work
+
+Include move-level evaluations or engine analysis for deeper opening strength assessment.
+Extend the dataset to additional years or platforms to reduce sampling bias.
+Build empirical opening-style clusters instead of relying on ECO families.
+Add interpretability tools (feature importance, SHAP) to understand model behavior.
+Create an interactive dashboard to explore openings across rating levels and formats.
