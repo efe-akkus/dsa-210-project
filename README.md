@@ -152,39 +152,30 @@ Visualized through grouped bar charts, line plots and heatmaps.
 
 ## 5. Hypothesis Testing
 
-### Aşağıya **senin formatında**, **H₀ ve H₁ açık şekilde**, **projeye uygun**, **direkt kopyala–yapıştır** hipotez kısmını veriyorum.
-Bu metin, README’nin 5. bölümünü tamamen değiştirmek için kullanılabilir.
-
----
-
-## 5. Hypothesis Testing
-
 ### **H1 — Opening choice influences win rate**
 
-**Null Hypothesis (H₀₁)**
+**Null Hypothesis (H₀)**
 Opening choice does not affect win rates when rating level and time control are held constant. Win-rate differences between openings are due to random variation.
 
-**Alternative Hypothesis (H₁₁)**
+**Alternative Hypothesis (H₁)**
 Opening choice has a significant effect on win rates within the same rating level and time control.
 
----
 
 ### **H2 — Opening effectiveness changes across rating levels**
 
-**Null Hypothesis (H₀₂)**
+**Null Hypothesis (H₀)**
 The win rate of a given opening is the same across all rating buckets. Rating level does not modify opening effectiveness.
 
-**Alternative Hypothesis (H₁₂)**
+**Alternative Hypothesis (H₁)**
 The win rate of a given opening differs across rating buckets. Rating level modifies the effectiveness of openings.
 
----
 
 ### **H3 — Opening strength differs across time controls**
 
-**Null Hypothesis (H₀₃)**
+**Null Hypothesis (H₀)**
 An opening’s win rate is identical across blitz, rapid, and classical formats. Time control has no effect on opening performance.
 
-**Alternative Hypothesis (H₁₃)**
+**Alternative Hypothesis (H₁)**
 An opening’s win rate changes across blitz, rapid, and classical formats. Time control influences opening performance.
 
 All tests evaluated at 5% and 1% significance levels.
