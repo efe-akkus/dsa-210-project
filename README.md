@@ -152,18 +152,40 @@ Visualized through grouped bar charts, line plots and heatmaps.
 
 ## 5. Hypothesis Testing
 
-### H1 — Opening choice influences win rate
+### Aşağıya **senin formatında**, **H₀ ve H₁ açık şekilde**, **projeye uygun**, **direkt kopyala–yapıştır** hipotez kısmını veriyorum.
+Bu metin, README’nin 5. bölümünü tamamen değiştirmek için kullanılabilir.
 
-**Test:** Chi-square independence test
-**Context:** Within same rating bucket and time control
+---
 
-### H2 — Opening effectiveness changes across rating levels
+## 5. Hypothesis Testing
 
-**Test:** Two-proportion z-tests comparing win rates between buckets
+### **H1 — Opening choice influences win rate**
 
-### H3 — Opening strength differs across time controls
+**Null Hypothesis (H₀₁)**
+Opening choice does not affect win rates when rating level and time control are held constant. Win-rate differences between openings are due to random variation.
 
-**Test:** Proportion comparison (e.g., blitz vs rapid, blitz vs classical)
+**Alternative Hypothesis (H₁₁)**
+Opening choice has a significant effect on win rates within the same rating level and time control.
+
+---
+
+### **H2 — Opening effectiveness changes across rating levels**
+
+**Null Hypothesis (H₀₂)**
+The win rate of a given opening is the same across all rating buckets. Rating level does not modify opening effectiveness.
+
+**Alternative Hypothesis (H₁₂)**
+The win rate of a given opening differs across rating buckets. Rating level modifies the effectiveness of openings.
+
+---
+
+### **H3 — Opening strength differs across time controls**
+
+**Null Hypothesis (H₀₃)**
+An opening’s win rate is identical across blitz, rapid, and classical formats. Time control has no effect on opening performance.
+
+**Alternative Hypothesis (H₁₃)**
+An opening’s win rate changes across blitz, rapid, and classical formats. Time control influences opening performance.
 
 All tests evaluated at 5% and 1% significance levels.
 
@@ -200,56 +222,3 @@ Predict game outcome using:
 * ROC–AUC (binary targets)
 
 Comparison focuses on whether including opening-related features improves prediction over rating-only baselines.
-
----
-
-## 7. Project Structure
-
-```
-/
-├── data/
-│   ├── raw/                # Original dataset (not committed if large)
-│   └── processed/          # Cleaned dataset with features
-├── notebooks/
-│   ├── 01_data_cleaning.ipynb
-│   ├── 02_eda.ipynb
-│   ├── 03_hypothesis_testing.ipynb
-│   └── 04_modeling.ipynb
-├── figures/
-│   └── exported plots
-└── README.md
-```
-
-The project follows a standard workflow with clear separation of cleaning, EDA, testing, and modeling stages.
-
----
-
-## 8. Limitations
-
-* Dataset represents online play only
-* Some openings have small sample sizes
-* Elo rating may not fully reflect player strength
-* Termination conditions (e.g., timeout) might bias results
-* Opening categories (tactical, positional, etc.) may involve subjective labeling
-
----
-
-## 9. Future Work
-
-* Add newer datasets to study temporal trends in openings
-* Build a dashboard for interactive opening exploration
-* Use move-by-move models to measure early-game advantage
-* Apply clustering to group openings empirically
-* Investigate drawing tendencies and imbalance levels in depth
-
----
-
-## 10. References
-
-* Lichess Games Dataset (Kaggle)
-* ECO Opening Encyclopedia
-* DSA 210 course materials on EDA, hypothesis testing, and ML
-
----
-
-Bu README artık Colab’a atıf içermiyor, örnek projelerle aynı formatta ve doğrudan kullanılabilir.
