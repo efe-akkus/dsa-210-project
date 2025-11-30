@@ -94,59 +94,60 @@ Used directly for category-level comparisons.
 
 ## 4. Exploratory Data Analysis (EDA)
 
-### 4.1 Opening Overview
+A series of exploratory visualizations were generated to understand the structure of the data before formal hypothesis testing. The EDA focuses on rating distributions, time-control patterns, opening family behavior, and the relationship between openings and win rates.
 
-Planned analyses include:
+### **4.1 Player & Game Distributions**
 
-* Most frequently played openings
-* Win rates for White and Black by opening
-* Comparison of popularity vs win rate
-* Heatmaps of ECO family performance
+Several baseline distributions were examined to understand the composition of the dataset:
 
-Focus questions:
+* **Rating bucket distribution** (Beginner, Intermediate, Advanced, Expert)
+* **Event type distribution** (blitz, bullet, rapid, classical)
+* **Opening family frequency** (A–E)
+* **Overall result distribution** (white, black, draw)
 
-* Are popular openings also successful?
-* Which openings deviate most from expected win-rate baselines?
-
----
-
-### 4.2 Time Control Comparison
-
-Separate evaluation of:
-
-* Blitz
-* Rapid
-* Classical
-
-Key questions:
-
-* Do tactical openings perform better in blitz due to faster play?
-* Are positional openings more effective in longer formats?
-* Are certain openings stable across all time controls?
+These provide context for interpreting opening performance across different subsets of players and game formats.
 
 ---
 
-### 4.3 Rating-Level Comparison
+### **4.2 Opening Performance Patterns**
 
-Analyses performed for each rating bucket:
+To investigate opening effectiveness, the following visual analyses were performed:
 
-* Top-performing openings for each skill group
-* Openings that decline or improve with higher rating
-* Identification of openings suited for beginners vs experts
+* **White win rate by opening family**
+* **Opening family distribution across rating buckets**
+* **White win rate heatmaps**
 
-This allows detection of openings that require theoretical precision.
+  * Rating bucket × Opening family
+  * Event type × Opening family
+* **Draw-rate differences** across time controls
+
+These plots reveal how opening families behave under different conditions and whether certain styles favor specific skill levels or formats.
 
 ---
 
-### 4.4 Multi-Dimensional Interaction
+### **4.3 Relationships Between Openings & Performance**
 
-Combined evaluations studying:
+Additional analyses explore performance variation at a more granular level:
 
-* Opening × time control
-* Opening × rating
-* Opening family × skill level × format
+* **Opening popularity vs white win rate** (log-scaled scatter plot)
+* **Elo difference vs white win probability** (binned curve)
 
-Visualized through grouped bar charts, line plots and heatmaps.
+These visualizations help identify whether popular openings tend to perform better, and how opening choice interacts with rating advantages.
+
+---
+
+### **4.4 Multi-Dimensional Interaction Effects**
+
+To understand the combined influence of rating, time control, and opening family, multidimensional views were generated:
+
+* Opening family compositions across rating buckets
+* Opening family compositions across event types
+* Interaction heatmaps that summarize the joint effects of:
+
+  * Opening × Rating
+  * Opening × Time Control
+
+These analyses will guide the statistical hypothesis testing performed later.
 
 ---
 
